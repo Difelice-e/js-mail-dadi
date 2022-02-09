@@ -10,20 +10,31 @@ document.getElementById('submit-button').addEventListener("click",   // aggiunto
     function () {
         for (let i = 0; i < emailRegistrate.length; i++) {
             if (emailRegistrate[i] === userMail.value) {   // controllo se la mail è presente in lista
-                alert("La tua email è valida, puoi accedere al sito!")   // stampo messaggio di esito positivo
+                alert("La tua email è valida, puoi accedere al sito!");   // stampo messaggio di esito positivo
                 break
             } else {
-                alert("Ci dispiace, la tua email non è registrata!")   // stampo messaggio di esito negativo
+                alert("Ci dispiace, la tua email non è registrata!");   // stampo messaggio di esito negativo
                 break
             }
         }
     }
-)
+);
 
 
 // GIOCO DEI DADI
 
-// generazione numero random 1-6 per l'utente
-// generazione numero random 1-6 per il pc
-// controllo i valori per decidere il più alto
-// stampo messaggio di esito (vittoria, sconfitta o pareggio)
+document.getElementById('dice-button').addEventListener("click",   // evento di click sul bottone
+    function() {
+        const userDice = Math.floor(Math.random() * 6) + 1;   // generazione numero random 1-6 per l'utente
+        const botDice = Math.floor(Math.random() * 6) + 1;   // generazione numero random 1-6 per il pc
+        let diceResult = document.getElementById('dice-result');
+        diceResult.innerHTML = `Il tuo numero è ${userDice} mentre il computer ha tirato un ${botDice}`;   // stanpo i valori dei dadi (dovessero pensare che sono truccati!)
+        if (userDice > botDice) {   // controllo se l'utente ha vinto
+            diceResult.innerHTML += " - Hai vinto!";   // stampo messaggio di vittoria!
+        } else if (userDice < botDice) {  // controllo se l'utente ha perso
+            diceResult.innerHTML += " - Oh no, hai perso!";   // stampo messaggio di sconfitta
+        } else {  // caso di pareggio
+            diceResult.innerHTML += " - Pareggio! Ritenta";   // stampo messaggio di pareggio
+        }
+    }
+);
