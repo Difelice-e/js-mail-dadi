@@ -6,25 +6,37 @@ const emailRegistrate = ["boolean@gmail.com", "official.booleanògmail.com", "ex
 // input dell'utente della propria mail e creazione della variabile
 const userMail = document.getElementById('email-utente');
 
+let emailConfirm = false
+
 document.getElementById('submit-button').addEventListener("click",   // aggiunto evento di click sul bottone che starta il ciclo
     function () {
         for (let i = 0; i < emailRegistrate.length; i++) {
-            if (emailRegistrate[i] === userMail.value) {   // controllo se la mail è presente in lista
-                alert("La tua email è valida, puoi accedere al sito!");   // stampo messaggio di esito positivo
+            
+            if (emailRegistrate[i] === userMail.value) {
+                emailConfirm = true;
                 break
-            } else {
-                alert("Ci dispiace, la tua email non è registrata!");   // stampo messaggio di esito negativo
-                break
-            }
+            }    
+        }
+    
+        if (emailConfirm === true) {   // controllo se la mail è presente in lista
+            alert("La tua email è valida, puoi accedere al sito!");   // stampo messaggio di esito positivo
+            
+        } else {
+            alert("Ci dispiace, la tua email non è registrata!");   // stampo messaggio di esito negativo
+            
         }
     }
 );
 
 
+
+
+
+
 // GIOCO DEI DADI
 
 document.getElementById('dice-button').addEventListener("click",   // evento di click sul bottone
-    function() {
+    function () {
         const userDice = Math.floor(Math.random() * 6) + 1;   // generazione numero random 1-6 per l'utente
         const botDice = Math.floor(Math.random() * 6) + 1;   // generazione numero random 1-6 per il pc
         let diceResult = document.getElementById('dice-result');
